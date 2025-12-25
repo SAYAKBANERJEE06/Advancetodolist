@@ -1,20 +1,46 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Preview
 
-# Run and deploy your AI Studio app
+[https://advancetodolist-alpha.vercel.app]
 
-This contains everything you need to run your app locally.
+# Gemini API React Starter
 
-View your app in AI Studio: https://ai.studio/apps/temp/1
+This project is a lightweight React application demonstrating how to integrate the Google Gemini API using the `@google/genai` SDK.
 
-## Run Locally
+## Features
 
-**Prerequisites:**  Node.js
+-   **React & TypeScript Setup**: A simple, single-file React component structure.
+-   **Gemini API Integration**: Demonstrates how to initialize the client and generate text content.
+-   **Error Handling**: Basic error management for API requests.
 
+## How It Works
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### 1. Initialization
+
+The application initializes the Google GenAI client using the API key provided in the environment variables.
+
+```typescript
+import { GoogleGenAI } from "@google/genai";
+
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+```
+
+### 2. Generating Content
+
+The app uses the `generateContent` method to send prompts to the model.
+
+```typescript
+const response = await ai.models.generateContent({
+  model: 'gemini-3-flash-preview',
+  contents: prompt,
+});
+
+console.log(response.text);
+```
+
+## Models Used
+
+-   **gemini-3-flash-preview**: Used for fast, general-purpose text generation.
+
+## Environment Variables
+
+This application relies on the `process.env.API_KEY` variable being set with a valid Google GenAI API key.
